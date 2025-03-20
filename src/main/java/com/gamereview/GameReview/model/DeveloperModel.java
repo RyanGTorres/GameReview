@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
 
 @Entity
 @Table(name = "tb_developer")
@@ -21,7 +20,7 @@ public class DeveloperModel {
     @Column(name = "id")
     private Long id;
 
-    @Column (name = "name")
+    @Column (name = "name_developer")
     private String name;
 
     @Column (name = "country")

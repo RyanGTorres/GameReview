@@ -31,6 +31,6 @@ public class RatingModel {
     @Column(name = "comment")
     private String comment;
 
-    @Column(name = "date")
-    private Date realisingdate;
+    @Column(name = "date_realese")
+    private Date realeseDate;
 }
