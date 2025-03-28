@@ -5,6 +5,7 @@ import com.gamereview.GameReview.repository.DeveloperRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeveloperService {
@@ -16,5 +17,10 @@ public class DeveloperService {
 
     public List<DeveloperModel> listarDeveloper(){
         return developerRepository.findAll();
+    }
+
+    public DeveloperModel listarDeveloperPorID(Long id){
+        Optional<DeveloperModel> developerModel = developerRepository.findById(id);
+        return developerModel.orElse(null);
     }
 }

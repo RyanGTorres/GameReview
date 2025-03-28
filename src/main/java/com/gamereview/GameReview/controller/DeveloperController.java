@@ -23,14 +23,14 @@ public class DeveloperController {
     }
 
     //GET ALL
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public List<DeveloperModel> listarDeveloper(){
         return developerService.listarDeveloper();
     }
 
-    @GetMapping("/todosID")
-    public String mostrarTodosOsDeveloperPorId(){
-        return "Developer Mostrado por id!";
+    @GetMapping("/listar/{id}")
+    public DeveloperModel listarDeveloperPorID(@PathVariable Long id){
+        return developerService.listarDeveloperPorID(id);
     }
 
     @PutMapping("/atualizarID")

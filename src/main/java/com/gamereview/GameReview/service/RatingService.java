@@ -5,6 +5,7 @@ import com.gamereview.GameReview.repository.RatingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RatingService {
@@ -16,5 +17,10 @@ public class RatingService {
 
     public List<RatingModel> listarRating(){
         return ratingRepository.findAll();
+    }
+
+    public RatingModel listaRatingPorID(Long id){
+        Optional<RatingModel> ratingModel = ratingRepository.findById(id);
+        return ratingModel.orElse(null);
     }
 }

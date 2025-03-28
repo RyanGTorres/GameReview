@@ -22,14 +22,14 @@ public class GameController {
     }
 
     //GET ALL
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public List<GameModel> mostrarTodosOsGame(){
         return gameService.listarGame();
     }
 
-    @GetMapping("/todosID")
-    public String mostrarTodosOsGamePorId(){
-        return "Game Mostrado por id!";
+    @GetMapping("/listar/{id}")
+    public GameModel listarGameporID(@PathVariable Long id){
+        return gameService.listarGamePorID(id);
     }
 
     @PutMapping("/atualizarID")

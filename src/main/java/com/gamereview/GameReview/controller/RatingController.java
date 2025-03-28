@@ -22,14 +22,14 @@ public class RatingController {
     }
 
     //GET ALL
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public List<RatingModel> listarRating(){
         return ratingService.listarRating();
     }
 
-    @GetMapping("/todosID")
-    public String mostrarTodosOsRatingPorId(){
-        return "Rating Mostrado por id!";
+    @GetMapping("/listar/{id}")
+    public RatingModel listarRatingPorID(@PathVariable Long id){
+        return ratingService.listaRatingPorID(id);
     }
 
     @PutMapping("/atualizarID")
