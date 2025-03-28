@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,8 +23,9 @@ public class RatingModel {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "game_id") // Nome da coluna que referencia o jogo
-    private GameModel game; // Relacionamento com um único jogo
+    @JsonIgnore
+    @JoinColumn(name = "game_id")
+    private GameModel game;
 
     @Column(name = "note")
     private double note;
