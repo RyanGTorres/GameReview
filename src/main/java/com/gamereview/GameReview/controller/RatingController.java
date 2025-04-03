@@ -37,8 +37,8 @@ public class RatingController {
         return "Atualizar Rating ID";
     }
 
-    @DeleteMapping("/deletarID")
-    public String deletarRatingPorId(){
-        return "deletar Rating por id!";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarRating(@PathVariable Long id){
+        ratingService.deletarRating(id);
     }
 }

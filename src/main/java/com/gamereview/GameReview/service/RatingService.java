@@ -26,4 +26,8 @@ public class RatingService {
     public RatingModel criarRating(RatingModel rating){
         return ratingRepository.save(rating);
     }
+
+    public void deletarRating(Long id){
+        ratingRepository.deleteById(id);
+    }
 }

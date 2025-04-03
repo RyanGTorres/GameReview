@@ -33,14 +33,14 @@ public class DeveloperController {
         return developerService.listarDeveloperPorID(id);
     }
 
-    @PutMapping("/atualizarID")
+    @PutMapping("/atualizar/{id}")
     public String atualizarDeveloperPorId(){
         return "Atualizar Developer ID";
     }
 
-    @DeleteMapping("/deletarID")
-    public String deletarDeveloperPorId(){
-        return "deletar Developer por id!";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarDeveloper(@PathVariable Long id){
+        developerService.deletarDeveloper(id);
     }
 
 }

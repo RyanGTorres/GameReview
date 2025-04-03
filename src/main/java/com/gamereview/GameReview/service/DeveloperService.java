@@ -2,6 +2,7 @@ package com.gamereview.GameReview.service;
 
 import com.gamereview.GameReview.model.DeveloperModel;
 import com.gamereview.GameReview.repository.DeveloperRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,5 +27,9 @@ public class DeveloperService {
 
     public DeveloperModel criarDeveloper(DeveloperModel developer){
         return developerRepository.save(developer);
+    }
+
+    public void deletarDeveloper(Long id){
+        developerRepository.deleteById(id);
     }
 }

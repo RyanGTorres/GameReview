@@ -27,4 +27,8 @@ public class GameService {
     public GameModel criarGame(GameModel game){
         return gameRepository.save(game);
     }
+
+    public void deletarGame(Long id){
+        gameRepository.deleteById(id);
+    }
 }
