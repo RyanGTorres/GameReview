@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.dto.GameDTO;
 import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.service.GameService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class GameController {
     }
 
     @PostMapping("/criar")
-    public GameModel criarGame(@RequestBody GameModel game){
+    public GameDTO criarGame(@RequestBody GameDTO game){
         return gameService.criarGame(game);
     }
 
