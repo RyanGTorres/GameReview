@@ -34,8 +34,8 @@ public class DeveloperController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public String atualizarDeveloperPorId(){
-        return "Atualizar Developer ID";
+    public DeveloperModel atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperModel developerAtualizado){
+        return developerService.atualizarDeveloper(id, developerAtualizado);
     }
 
     @DeleteMapping("/deletar/{id}")

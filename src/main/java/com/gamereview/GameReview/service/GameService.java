@@ -28,6 +28,14 @@ public class GameService {
         return gameRepository.save(game);
     }
 
+    public GameModel atualizarGame(Long id, GameModel gameAtualizado){
+        if (gameRepository.existsById(id)){
+            gameAtualizado.setId(id);
+            return gameRepository.save(gameAtualizado);
+        }
+        return null;
+    }
+
     public void deletarGame(Long id){
         gameRepository.deleteById(id);
     }

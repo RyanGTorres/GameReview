@@ -27,6 +27,14 @@ public class RatingService {
         return ratingRepository.save(rating);
     }
 
+    public RatingModel atualizarRating(Long id, RatingModel ratingAtualizado){
+        if (ratingRepository.existsById(id)){
+            ratingAtualizado.setId(id);
+            return ratingRepository.save(ratingAtualizado);
+        }
+        return null;
+    }
+
     public void deletarRating(Long id){
         ratingRepository.deleteById(id);
     }

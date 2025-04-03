@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.model.RatingModel;
 import com.gamereview.GameReview.service.RatingService;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,9 @@ public class RatingController {
         return ratingService.listaRatingPorID(id);
     }
 
-    @PutMapping("/atualizarID")
-    public String atualizarRatingPorId(){
-        return "Atualizar Rating ID";
+    @PutMapping("/atualizar/{id}")
+    public RatingModel atualizarRatingPorId(@PathVariable Long id, @RequestBody RatingModel ratingAtualizado){
+        return ratingService.atualizarRating(id, ratingAtualizado);
     }
 
     @DeleteMapping("/deletar/{id}")

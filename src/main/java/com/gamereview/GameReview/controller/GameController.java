@@ -33,8 +33,8 @@ public class GameController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public String atualizarGamePorId(){
-        return "Atualizar Game ID";
+    public GameModel atualizarGame(@PathVariable Long id, @RequestBody GameModel gameAtualizado){
+        return gameService.atualizarGame(id, gameAtualizado);
     }
 
     @DeleteMapping("/deletar/{id}")
