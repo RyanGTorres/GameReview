@@ -1,5 +1,7 @@
 package com.gamereview.GameReview.service;
 
+import com.gamereview.GameReview.dto.GameDTO;
+import com.gamereview.GameReview.mapper.GameMapper;
 import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.repository.GameRepository;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,11 @@ import java.util.Optional;
 @Service
 public class GameService {
     private GameRepository gameRepository;
+    private GameMapper gameMapper;
 
-    public GameService(GameRepository gameRepository) {
+    public GameService(GameRepository gameRepository, GameMapper gameMapper) {
         this.gameRepository = gameRepository;
+        this.gameMapper = gameMapper;
     }
 
     public List<GameModel> listarGame(){
@@ -24,8 +28,10 @@ public class GameService {
         return gameModel.orElse(null);
     }
 
-    public GameModel criarGame(GameModel game){
-        return gameRepository.save(game);
+    public GameDTO criarGame(GameDTO gameDTO){
+        GameModel game = gameMapper.map(gameDTO);
+        game = gameRepository.save(game);
+        return gameMapper.map(game);
     }
 
     public GameModel atualizarGame(Long id, GameModel gameAtualizado){
