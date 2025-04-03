@@ -17,8 +17,8 @@ public class GameController {
     }
 
     @PostMapping("/criar")
-    public String criarGame(){
-        return "Game criado!";
+    public GameModel criarGame(@RequestBody GameModel game){
+        return gameService.criarGame(game);
     }
 
     //GET ALL

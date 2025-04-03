@@ -24,4 +24,7 @@ public class GameService {
         return gameModel.orElse(null);
     }
 
+    public GameModel criarGame(GameModel game){
+        return gameRepository.save(game);
+    }
 }

@@ -23,4 +23,8 @@ public class DeveloperService {
         Optional<DeveloperModel> developerModel = developerRepository.findById(id);
         return developerModel.orElse(null);
     }
+
+    public DeveloperModel criarDeveloper(DeveloperModel developer){
+        return developerRepository.save(developer);
+    }
 }

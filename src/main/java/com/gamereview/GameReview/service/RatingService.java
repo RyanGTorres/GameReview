@@ -23,4 +23,7 @@ public class RatingService {
         Optional<RatingModel> ratingModel = ratingRepository.findById(id);
         return ratingModel.orElse(null);
     }
+    public RatingModel criarRating(RatingModel rating){
+        return ratingRepository.save(rating);
+    }
 }

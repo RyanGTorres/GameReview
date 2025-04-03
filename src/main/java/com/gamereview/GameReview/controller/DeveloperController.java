@@ -18,8 +18,8 @@ public class DeveloperController {
     }
 
     @PostMapping("/criar")
-    public String criarDeveloper(){
-        return "Developer criado!";
+    public DeveloperModel criarDeveloper(@RequestBody DeveloperModel developer){
+        return developerService.criarDeveloper(developer);
     }
 
     //GET ALL

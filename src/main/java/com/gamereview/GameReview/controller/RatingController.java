@@ -17,8 +17,8 @@ public class RatingController {
     }
 
     @PostMapping("/criar")
-    public String criarRating(){
-        return "Rating criado!";
+    public RatingModel criarRating(@RequestBody RatingModel rating){
+        return ratingService.criarRating(rating);
     }
 
     //GET ALL
