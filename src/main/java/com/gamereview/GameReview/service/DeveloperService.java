@@ -1,38 +1,54 @@
 package com.gamereview.GameReview.service;
 
+import com.gamereview.GameReview.dto.DeveloperDTO;
+import com.gamereview.GameReview.dto.GameDTO;
+import com.gamereview.GameReview.mapper.DeveloperMapper;
 import com.gamereview.GameReview.model.DeveloperModel;
+import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.repository.DeveloperRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DeveloperService {
     private DeveloperRepository developerRepository;
+    private DeveloperMapper developerMapper;
 
-    public DeveloperService(DeveloperRepository developerRepository) {
+    public DeveloperService(DeveloperRepository developerRepository, DeveloperMapper developerMapper) {
         this.developerRepository = developerRepository;
+        this.developerMapper = developerMapper;
     }
 
-    public List<DeveloperModel> listarDeveloper(){
-        return developerRepository.findAll();
+    public List<DeveloperDTO> listarDeveloper(){
+        List<DeveloperModel> developerModels = developerRepository.findAll();
+        return developerModels.stream()
+                .map(developerMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
-    public DeveloperModel listarDeveloperPorID(Long id){
+    public DeveloperDTO listarDeveloperPorID(Long id){
         Optional<DeveloperModel> developerModel = developerRepository.findById(id);
-        return developerModel.orElse(null);
+        return developerModel.map(developerMapper::mapToDTO).orElse(null);
     }
 
-    public DeveloperModel criarDeveloper(DeveloperModel developer){
-        return developerRepository.save(developer);
+    public DeveloperDTO criarDeveloper(DeveloperDTO developerDTO){
+        DeveloperModel dev = developerMapper.mapToModel(developerDTO);
+        dev = developerRepository.save(dev);
+        return developerMapper.mapToDTO(dev);
     }
 
-    public DeveloperModel atualizarDeveloper(Long id, DeveloperModel developerAtualizado){
-        if(developerRepository.existsById(id)){
+
+    public DeveloperDTO atualizarDeveloper(Long id, DeveloperDTO developerDTO){
+        Optional<DeveloperModel>developerExistente = developerRepository.findById(id);
+        if (developerExistente.isPresent()){
+            DeveloperModel developerAtualizado = developerMapper.mapToModel(developerDTO);
             developerAtualizado.setId(id);
-            return developerRepository.save(developerAtualizado);
+            DeveloperModel developerSalvo = developerRepository.save(developerAtualizado);
+            return developerMapper.mapToDTO(developerSalvo);
         }
         return null;
     }

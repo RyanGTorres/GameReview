@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.dto.RatingDTO;
 import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.model.RatingModel;
 import com.gamereview.GameReview.service.RatingService;
@@ -18,23 +19,23 @@ public class RatingController {
     }
 
     @PostMapping("/criar")
-    public RatingModel criarRating(@RequestBody RatingModel rating){
+    public RatingDTO criarRating(@RequestBody RatingDTO rating){
         return ratingService.criarRating(rating);
     }
 
     //GET ALL
     @GetMapping("/listar")
-    public List<RatingModel> listarRating(){
+    public List<RatingDTO> listarRating(){
         return ratingService.listarRating();
     }
 
     @GetMapping("/listar/{id}")
-    public RatingModel listarRatingPorID(@PathVariable Long id){
+    public RatingDTO listarRatingPorID(@PathVariable Long id){
         return ratingService.listaRatingPorID(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public RatingModel atualizarRatingPorId(@PathVariable Long id, @RequestBody RatingModel ratingAtualizado){
+    public RatingDTO atualizarRatingPorId(@PathVariable Long id, @RequestBody RatingDTO ratingAtualizado){
         return ratingService.atualizarRating(id, ratingAtualizado);
     }
 

@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.dto.DeveloperDTO;
 import com.gamereview.GameReview.model.DeveloperModel;
 import com.gamereview.GameReview.service.DeveloperService;
 import org.springframework.stereotype.Controller;
@@ -18,23 +19,23 @@ public class DeveloperController {
     }
 
     @PostMapping("/criar")
-    public DeveloperModel criarDeveloper(@RequestBody DeveloperModel developer){
+    public DeveloperDTO criarDeveloper(@RequestBody DeveloperDTO developer){
         return developerService.criarDeveloper(developer);
     }
 
     //GET ALL
     @GetMapping("/listar")
-    public List<DeveloperModel> listarDeveloper(){
+    public List<DeveloperDTO> listarDeveloper(){
         return developerService.listarDeveloper();
     }
 
     @GetMapping("/listar/{id}")
-    public DeveloperModel listarDeveloperPorID(@PathVariable Long id){
+    public DeveloperDTO listarDeveloperPorID(@PathVariable Long id){
         return developerService.listarDeveloperPorID(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public DeveloperModel atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperModel developerAtualizado){
+    public DeveloperDTO atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperDTO developerAtualizado){
         return developerService.atualizarDeveloper(id, developerAtualizado);
     }
 
