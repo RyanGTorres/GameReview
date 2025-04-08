@@ -29,9 +29,9 @@ public class GameService {
     }
 
     public GameDTO criarGame(GameDTO gameDTO){
-        GameModel game = gameMapper.map(gameDTO);
+        GameModel game = gameMapper.mapToModel(gameDTO);
         game = gameRepository.save(game);
-        return gameMapper.map(game);
+        return gameMapper.mapToDTO(game);
     }
 
     public GameModel atualizarGame(Long id, GameModel gameAtualizado){

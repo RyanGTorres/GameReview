@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GameMapper {
-    public GameModel map(GameDTO gameDTO){
+    public GameModel mapToModel(GameDTO gameDTO){
         GameModel gameModel = new GameModel();
         gameModel.setId(gameDTO.getId());
         gameModel.setName(gameDTO.getName());
@@ -20,7 +20,7 @@ public class GameMapper {
         return gameModel;
     }
 
-    public GameDTO map(GameModel gameModel){
+    public GameDTO mapToDTO(GameModel gameModel){
         GameDTO gameDTO = new GameDTO();
         gameDTO.setId(gameModel.getId());
         gameDTO.setName(gameModel.getName());

@@ -1,6 +1,8 @@
 package com.gamereview.GameReview.service;
 
+import com.gamereview.GameReview.dto.RatingDTO;
 import com.gamereview.GameReview.mapper.GameMapper;
+import com.gamereview.GameReview.mapper.RatingMapper;
 import com.gamereview.GameReview.model.RatingModel;
 import com.gamereview.GameReview.repository.RatingRepository;
 import org.springframework.stereotype.Service;
@@ -11,10 +13,12 @@ import java.util.Optional;
 @Service
 public class RatingService {
     private RatingRepository ratingRepository;
+    private RatingMapper ratingMapper;
 
 
-    public RatingService(RatingRepository ratingRepository) {
+    public RatingService(RatingRepository ratingRepository, RatingMapper ratingMapper) {
         this.ratingRepository = ratingRepository;
+        this.ratingMapper = ratingMapper;
     }
 
     public List<RatingModel> listarRating(){
@@ -25,8 +29,10 @@ public class RatingService {
         Optional<RatingModel> ratingModel = ratingRepository.findById(id);
         return ratingModel.orElse(null);
     }
-    public RatingModel criarRating(RatingModel rating){
-        return ratingRepository.save(rating);
+    public RatingDTO criarRating(RatingDTO ratingDTO){
+        RatingModel ratingModel = ratingMapper.mapToModel(ratingDTO);
+        ratingModel = ratingRepository.save(ratingModel);
+        return ratingMapper.mapToDTO(ratingModel);
     }
 
     public RatingModel atualizarRating(Long id, RatingModel ratingAtualizado){

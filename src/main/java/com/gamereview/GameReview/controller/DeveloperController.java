@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.dto.DeveloperDTO;
 import com.gamereview.GameReview.model.DeveloperModel;
 import com.gamereview.GameReview.service.DeveloperService;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class DeveloperController {
     }
 
     @PostMapping("/criar")
-    public DeveloperModel criarDeveloper(@RequestBody DeveloperModel developer){
+    public DeveloperDTO criarDeveloper(@RequestBody DeveloperDTO developer){
         return developerService.criarDeveloper(developer);
     }
 

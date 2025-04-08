@@ -1,5 +1,6 @@
 package com.gamereview.GameReview.controller;
 
+import com.gamereview.GameReview.dto.RatingDTO;
 import com.gamereview.GameReview.model.GameModel;
 import com.gamereview.GameReview.model.RatingModel;
 import com.gamereview.GameReview.service.RatingService;
@@ -18,7 +19,7 @@ public class RatingController {
     }
 
     @PostMapping("/criar")
-    public RatingModel criarRating(@RequestBody RatingModel rating){
+    public RatingDTO criarRating(@RequestBody RatingDTO rating){
         return ratingService.criarRating(rating);
     }
 
