@@ -24,17 +24,17 @@ public class GameController {
 
     //GET ALL
     @GetMapping("/listar")
-    public List<GameModel> mostrarTodosOsGame(){
+    public List<GameDTO> mostrarTodosOsGame(){
         return gameService.listarGame();
     }
 
     @GetMapping("/listar/{id}")
-    public GameModel listarGameporID(@PathVariable Long id){
+    public GameDTO listarGameporID(@PathVariable Long id){
         return gameService.listarGamePorID(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public GameModel atualizarGame(@PathVariable Long id, @RequestBody GameModel gameAtualizado){
+    public GameDTO atualizarGame(@PathVariable Long id, @RequestBody GameDTO gameAtualizado){
         return gameService.atualizarGame(id, gameAtualizado);
     }
 

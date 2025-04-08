@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GameService {
@@ -19,13 +20,16 @@ public class GameService {
         this.gameMapper = gameMapper;
     }
 
-    public List<GameModel> listarGame(){
-        return gameRepository.findAll();
+    public List<GameDTO> listarGame(){
+        List<GameModel> games = gameRepository.findAll();
+        return games.stream()
+                .map(gameMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
-    public GameModel listarGamePorID(Long id){
-        Optional<GameModel>gameModel = gameRepository.findById(id);
-        return gameModel.orElse(null);
+    public GameDTO listarGamePorID(Long id){
+        Optional<GameModel>gameporID = gameRepository.findById(id);
+        return gameporID.map(gameMapper::mapToDTO).orElse(null);
     }
 
     public GameDTO criarGame(GameDTO gameDTO){
@@ -34,10 +38,13 @@ public class GameService {
         return gameMapper.mapToDTO(game);
     }
 
-    public GameModel atualizarGame(Long id, GameModel gameAtualizado){
-        if (gameRepository.existsById(id)){
+    public GameDTO atualizarGame(Long id, GameDTO gameDTO){
+        Optional<GameModel>gameExistente = gameRepository.findById(id);
+        if (gameExistente.isPresent()){
+            GameModel gameAtualizado = gameMapper.mapToModel(gameDTO);
             gameAtualizado.setId(id);
-            return gameRepository.save(gameAtualizado);
+            GameModel gameSalvo = gameRepository.save(gameAtualizado);
+            return gameMapper.mapToDTO(gameSalvo);
         }
         return null;
     }

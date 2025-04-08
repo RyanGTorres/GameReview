@@ -25,17 +25,17 @@ public class DeveloperController {
 
     //GET ALL
     @GetMapping("/listar")
-    public List<DeveloperModel> listarDeveloper(){
+    public List<DeveloperDTO> listarDeveloper(){
         return developerService.listarDeveloper();
     }
 
     @GetMapping("/listar/{id}")
-    public DeveloperModel listarDeveloperPorID(@PathVariable Long id){
+    public DeveloperDTO listarDeveloperPorID(@PathVariable Long id){
         return developerService.listarDeveloperPorID(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public DeveloperModel atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperModel developerAtualizado){
+    public DeveloperDTO atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperDTO developerAtualizado){
         return developerService.atualizarDeveloper(id, developerAtualizado);
     }
 

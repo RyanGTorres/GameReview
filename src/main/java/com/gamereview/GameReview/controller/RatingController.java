@@ -25,17 +25,17 @@ public class RatingController {
 
     //GET ALL
     @GetMapping("/listar")
-    public List<RatingModel> listarRating(){
+    public List<RatingDTO> listarRating(){
         return ratingService.listarRating();
     }
 
     @GetMapping("/listar/{id}")
-    public RatingModel listarRatingPorID(@PathVariable Long id){
+    public RatingDTO listarRatingPorID(@PathVariable Long id){
         return ratingService.listaRatingPorID(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public RatingModel atualizarRatingPorId(@PathVariable Long id, @RequestBody RatingModel ratingAtualizado){
+    public RatingDTO atualizarRatingPorId(@PathVariable Long id, @RequestBody RatingDTO ratingAtualizado){
         return ratingService.atualizarRating(id, ratingAtualizado);
     }
 

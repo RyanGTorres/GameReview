@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DeveloperService {
@@ -22,13 +23,16 @@ public class DeveloperService {
         this.developerMapper = developerMapper;
     }
 
-    public List<DeveloperModel> listarDeveloper(){
-        return developerRepository.findAll();
+    public List<DeveloperDTO> listarDeveloper(){
+        List<DeveloperModel> developerModels = developerRepository.findAll();
+        return developerModels.stream()
+                .map(developerMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
-    public DeveloperModel listarDeveloperPorID(Long id){
+    public DeveloperDTO listarDeveloperPorID(Long id){
         Optional<DeveloperModel> developerModel = developerRepository.findById(id);
-        return developerModel.orElse(null);
+        return developerModel.map(developerMapper::mapToDTO).orElse(null);
     }
 
     public DeveloperDTO criarDeveloper(DeveloperDTO developerDTO){
@@ -38,10 +42,13 @@ public class DeveloperService {
     }
 
 
-    public DeveloperModel atualizarDeveloper(Long id, DeveloperModel developerAtualizado){
-        if(developerRepository.existsById(id)){
+    public DeveloperDTO atualizarDeveloper(Long id, DeveloperDTO developerDTO){
+        Optional<DeveloperModel>developerExistente = developerRepository.findById(id);
+        if (developerExistente.isPresent()){
+            DeveloperModel developerAtualizado = developerMapper.mapToModel(developerDTO);
             developerAtualizado.setId(id);
-            return developerRepository.save(developerAtualizado);
+            DeveloperModel developerSalvo = developerRepository.save(developerAtualizado);
+            return developerMapper.mapToDTO(developerSalvo);
         }
         return null;
     }
