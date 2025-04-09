@@ -31,7 +31,7 @@ public class RatingService {
 
     }
 
-    public RatingDTO listaRatingPorID(Long id){
+    public RatingDTO listarRatingPorID(Long id){
         Optional<RatingModel> ratingModel = ratingRepository.findById(id);
         return ratingModel.map(ratingMapper::mapToDTO).orElse(null);
     }
