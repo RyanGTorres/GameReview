@@ -1,12 +1,13 @@
 package com.gamereview.GameReview.controller;
 
 import com.gamereview.GameReview.dto.DeveloperDTO;
-import com.gamereview.GameReview.dto.RatingDTO;
-import com.gamereview.GameReview.model.DeveloperModel;
 import com.gamereview.GameReview.service.DeveloperService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,14 @@ public class DeveloperController {
     }
 
     @PostMapping("/criar")
-    public ResponseEntity<String> criarDeveloper(@RequestBody DeveloperDTO developer){
+    @Operation(summary = "Cria uma desenvolvedora", description = "Essa rota cria uma desenvolvedora para ser associada e insere no banco de dados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "Sua desenvolvedora foi registrada com sucesso!"),
+            @ApiResponse (responseCode = "400",description = "Erro ao registrar sua desenvolvedora!")
+    })
+    public ResponseEntity<String> criarDeveloper(
+            @Parameter(description = "Usuario insere os dados da avaliação para serem criados no corpo da requisição!")
+            @RequestBody DeveloperDTO developer){
         DeveloperDTO developerDTO = developerService.criarDeveloper(developer);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("A desenvolvedora foi criada com sucesso!");
@@ -30,13 +38,24 @@ public class DeveloperController {
 
     //GET ALL
     @GetMapping("/listar")
+    @Operation(summary = "Lista todos as desenvolvedora criadas", description = "Essa rota tem a funçao de listar todas as desenvolvedora e exibir essa lista")
+    @ApiResponses(value = {
+            @ApiResponse (responseCode = "200",description = "Mostra todas a lista de desenvolvedora!")
+    })
     public ResponseEntity<List<DeveloperDTO>> listarDeveloper(){
         List<DeveloperDTO> developerDTO = developerService.listarDeveloper();
         return ResponseEntity.ok(developerDTO);
     }
 
     @GetMapping("/listar/{id}")
-    public ResponseEntity<?> listarDeveloperPorID(@PathVariable Long id){
+    @Operation(summary = "Lista a desenvolvedora pelo seu ID", description = "Essa rota tem a funçao de listar uma desenvolvedora pelo id e mostrar ao usuario")
+    @ApiResponses(value = {
+            @ApiResponse (responseCode = "200",description = "A desenvolvedora foi listada com sucesso!"),
+            @ApiResponse (responseCode = "404",description = "A desenvolvedora não foi listada!")
+    })
+    public ResponseEntity<?> listarDeveloperPorID(
+            @Parameter(description = "Usuario insere o ID no caminho da requisição")
+            @PathVariable Long id){
         DeveloperDTO developerDTO = developerService.listarDeveloperPorID(id);
         if (developerDTO == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -46,7 +65,16 @@ public class DeveloperController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<String> atualizarDevelope(@PathVariable Long id, @RequestBody DeveloperDTO developerAtualizado){
+    @Operation(summary = "Atualiza a desenvolvedora pelo seu ID", description = "Essa rota tem a funçao de alterar a desenvolvedora pelo id")
+    @ApiResponses(value = {
+            @ApiResponse (responseCode = "200",description = "A desenvolvedora foi alterada com sucesso!"),
+            @ApiResponse (responseCode = "404",description = "A desenvolvedora não foi alterado!")
+    })
+    public ResponseEntity<String> atualizarDevelope(
+            @Parameter(description = "Usuario insere o ID no caminho da requisição")
+            @PathVariable Long id,
+            @Parameter(description = "Usuario insere os dados da desenvolvedora para ser atualizadas no corpo da requisição!")
+            @RequestBody DeveloperDTO developerAtualizado){
 
         if (developerService.listarDeveloperPorID(id) == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -57,7 +85,14 @@ public class DeveloperController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletarDeveloper(@PathVariable Long id){
+    @Operation(summary = "Deleta a desenvolvedora pelo seu ID", description = "Essa rota tem a funçao de deletar a desenvolvedora pelo id digitado")
+    @ApiResponses(value = {
+            @ApiResponse (responseCode = "200",description = "A desenvolvedora foi deletada com sucesso!"),
+            @ApiResponse (responseCode = "404",description = "A desenvolvedora não foi deletada!")
+    })
+    public ResponseEntity<String> deletarDeveloper(
+            @Parameter(description = "Usuario insere o ID no caminho da requisição")
+            @PathVariable Long id){
        if (developerService.listarDeveloperPorID(id) != null){
            developerService.deletarDeveloper(id);
            return ResponseEntity.ok("O id: "+id+" foi deletado com sucesso!");

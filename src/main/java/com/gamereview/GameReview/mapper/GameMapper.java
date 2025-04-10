@@ -10,6 +10,7 @@ public class GameMapper {
         GameModel gameModel = new GameModel();
         gameModel.setId(gameDTO.getId());
         gameModel.setName(gameDTO.getName());
+        gameModel.setImgUrl(gameDTO.getImgUrl());
         gameModel.setDeveloper(gameDTO.getDeveloper());
         gameModel.setGender(gameDTO.getGender());
         gameModel.setPlatform(gameDTO.getPlatform());
@@ -24,10 +25,11 @@ public class GameMapper {
         GameDTO gameDTO = new GameDTO();
         gameDTO.setId(gameModel.getId());
         gameDTO.setName(gameModel.getName());
+        gameDTO.setImgUrl(gameModel.getImgUrl());
         gameDTO.setDeveloper(gameModel.getDeveloper());
         gameDTO.setGender(gameModel.getGender());
         gameDTO.setPlatform(gameModel.getPlatform());
-        gameDTO.setRealeseDate(gameDTO.getRealeseDate());
+        gameDTO.setRealeseDate(gameModel.getRealeseDate());
         gameDTO.setIndicativeRating(gameModel.getIndicativeRating());
         gameDTO.setRatings(gameModel.getRatings());
 
