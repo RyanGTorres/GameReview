@@ -1,0 +1,6 @@
+CREATE TABLE game_idea(
+id BIGSERIAL PRIMARY KEY,
+nome VARCHAR(255) NOT NULL,
+genero VARCHAR(255) NOT NULL,
+plataforma_digital VARCHAR(255) NOT NULL
+);
