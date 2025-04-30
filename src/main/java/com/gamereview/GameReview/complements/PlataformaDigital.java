@@ -1,18 +1,16 @@
 package com.gamereview.GameReview.complements;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
 public enum PlataformaDigital {
-    XBOX("Xbox"),
-    PLAYSTATION("Playstation"),
-    PC("Computador"),
-    NITENDO("Nitendo");
+    XBOX("XBOX"),
+    PLAYSTATION("PLAYSTATION"),
+    NINTENDO("NINTENDO"),
+    PC("COMPUTADOR");
 
-    private final String displayName;
+    private final String plataforma;
 
-    PlataformaDigital(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
 }

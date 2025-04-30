@@ -18,6 +18,9 @@ public class GameIdeaModel {
     private Long id;
     private String nome;
     private String genero;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private PlataformaDigital plataformaDigital;
 
 }
