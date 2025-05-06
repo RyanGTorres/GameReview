@@ -23,4 +23,6 @@ public class GameIdeaModel {
     @Enumerated(EnumType.STRING)
     private PlataformaDigital plataformaDigital;
 
+    public void addAttribute(String gameIdeaModel, GameIdeaModel gameIdeaModel1) {
+    }
 }
