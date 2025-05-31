@@ -14,7 +14,7 @@ public class GameMapper {
         gameModel.setDeveloper(gameDTO.getDeveloper());
         gameModel.setGender(gameDTO.getGender());
         gameModel.setPlatform(gameDTO.getPlatform());
-        gameModel.setRealeseDate(gameDTO.getRealeseDate());
+        gameModel.setReleaseDate(gameDTO.getReleaseDate());
         gameModel.setIndicativeRating(gameDTO.getIndicativeRating());
         gameModel.setRatings(gameDTO.getRatings());
 
@@ -29,7 +29,7 @@ public class GameMapper {
         gameDTO.setDeveloper(gameModel.getDeveloper());
         gameDTO.setGender(gameModel.getGender());
         gameDTO.setPlatform(gameModel.getPlatform());
-        gameDTO.setRealeseDate(gameModel.getRealeseDate());
+        gameDTO.setReleaseDate(gameModel.getReleaseDate());
         gameDTO.setIndicativeRating(gameModel.getIndicativeRating());
         gameDTO.setRatings(gameModel.getRatings());
 

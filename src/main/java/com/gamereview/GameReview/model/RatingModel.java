@@ -34,4 +34,44 @@ public class RatingModel {
 
     @Column(name = "date_realese")
     private Date realeseDate;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public GameModel getGame() {
+        return game;
+    }
+
+    public void setGame(GameModel game) {
+        this.game = game;
+    }
+
+    public double getNote() {
+        return note;
+    }
+
+    public void setNote(double note) {
+        this.note = note;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Date getRealeseDate() {
+        return realeseDate;
+    }
+
+    public void setRealeseDate(Date realeseDate) {
+        this.realeseDate = realeseDate;
+    }
 }

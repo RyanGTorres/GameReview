@@ -56,4 +56,20 @@ public class DeveloperService {
     public void deletarDeveloper(Long id){
         developerRepository.deleteById(id);
     }
+
+    public DeveloperRepository getDeveloperRepository() {
+        return developerRepository;
+    }
+
+    public void setDeveloperRepository(DeveloperRepository developerRepository) {
+        this.developerRepository = developerRepository;
+    }
+
+    public DeveloperMapper getDeveloperMapper() {
+        return developerMapper;
+    }
+
+    public void setDeveloperMapper(DeveloperMapper developerMapper) {
+        this.developerMapper = developerMapper;
+    }
 }

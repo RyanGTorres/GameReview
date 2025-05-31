@@ -10,7 +10,7 @@ public class RatingMapper {
         RatingModel ratingModel = new RatingModel();
         ratingModel.setId(ratingDTO.getId());
         ratingModel.setGame(ratingDTO.getGame());
-        ratingModel.setRealeseDate(ratingDTO.getRealeseDate());
+        ratingModel.setRealeseDate(ratingDTO.getReleaseDate());
         ratingModel.setNote(ratingDTO.getNote());
         ratingModel.setComment(ratingDTO.getComment());
 
@@ -22,7 +22,7 @@ public class RatingMapper {
 
         ratingDTO.setId(ratingModel.getId());
         ratingDTO.setGame(ratingModel.getGame());
-        ratingDTO.setRealeseDate(ratingModel.getRealeseDate());
+        ratingDTO.setReleaseDate(ratingModel.getRealeseDate());
         ratingDTO.setComment(ratingModel.getComment());
         ratingDTO.setNote(ratingModel.getNote());
 

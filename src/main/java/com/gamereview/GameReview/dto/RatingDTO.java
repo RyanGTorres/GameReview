@@ -16,5 +16,5 @@ public class RatingDTO {
     private GameModel game;
     private double note;
     private String comment;
-    private Date realeseDate;
+    private Date releaseDate;
 }

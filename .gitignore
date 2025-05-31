@@ -31,4 +31,49 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Environment Variables ###
 .env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+### Logs ###
+*.log
+logs/
+log/
+
+### Docker ###
+docker-compose.override.yml
+
+### System Files ###
+.DS_Store
+Thumbs.db
+
+### Package Files ###
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### Maven ###
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Database ###
+*.db
+*.sqlite
+*.sqlite3
+
+### Others ###
+*.swp
+*.swo
+node_modules/
+dist/
+tmp/
+temp/

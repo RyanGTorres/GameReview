@@ -1,10 +1,6 @@
 package com.gamereview.GameReview.complements;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-@Getter
 public enum PlataformaDigital {
     XBOX("XBOX"),
     PLAYSTATION("PLAYSTATION"),
@@ -13,4 +9,11 @@ public enum PlataformaDigital {
 
     private final String plataforma;
 
+    PlataformaDigital(String plataforma) {
+        this.plataforma = plataforma;
+    }
+
+    public String getPlataforma() {
+        return plataforma;
+    }
 }

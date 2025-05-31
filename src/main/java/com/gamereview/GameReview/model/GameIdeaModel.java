@@ -25,4 +25,36 @@ public class GameIdeaModel {
 
     public void addAttribute(String gameIdeaModel, GameIdeaModel gameIdeaModel1) {
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public PlataformaDigital getPlataformaDigital() {
+        return plataformaDigital;
+    }
+
+    public void setPlataformaDigital(PlataformaDigital plataformaDigital) {
+        this.plataformaDigital = plataformaDigital;
+    }
 }

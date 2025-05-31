@@ -28,4 +28,5 @@ public class DeveloperModel {
 
     @Column(name = "foundation_year") // Nome mais descritivo
     private int foundationYear; // Tipo alterado para int
+
 }

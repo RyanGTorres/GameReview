@@ -38,8 +38,8 @@ public class GameModel {
     @Column(name = "platform")
     private String platform;
 
-    @Column(name = "realese_date")
-    private Date realeseDate;
+    @Column(name = "release_date")
+    private Date releaseDate;
 
     @Column(name = "indicative_rating")
     private String indicativeRating;

@@ -19,7 +19,7 @@ public class GameDTO {
     private DeveloperModel developer;
     private String gender;
     private String platform;
-    private Date realeseDate;
+    private Date releaseDate;
     private String indicativeRating;
     private List<RatingModel> ratings;
 }

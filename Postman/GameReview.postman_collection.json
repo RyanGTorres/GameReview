@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Video Game API",
+    "_postman_id": "12345678-1234-1234-1234-1234567890ab",
+    "description": "Coleção para testar a API de Video Games: Rating, Game e Developer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Rating",
+      "item": [
+        {
+          "name": "Criar Rating",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"Nome do Usuário\",\n  \"game\": \"Nome do Jogo\",\n  \"score\": 5,\n  \"comment\": \"Ótimo jogo!\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/rating/criar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["rating", "criar"]}
+          }
+        },
+        {
+          "name": "Listar Ratings",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/rating/listar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["rating", "listar"]}}
+        },
+        {
+          "name": "Listar Rating por ID",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/rating/listar/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["rating", "listar", "1"]}}
+        },
+        {
+          "name": "Atualizar Rating",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"Usuário Atualizado\",\n  \"game\": \"Jogo Atualizado\",\n  \"score\": 4,\n  \"comment\": \"Comentário atualizado.\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/rating/atualizar/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["rating", "atualizar", "1"]}
+          }
+        },
+        {
+          "name": "Deletar Rating",
+          "request": {"method": "DELETE", "url": {"raw": "http://localhost:8080/rating/deletar/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["rating", "deletar", "1"]}}
+        }
+      ]
+    },
+    {
+      "name": "Game",
+      "item": [
+        {
+          "name": "Criar Game",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nome do Jogo\",\n  \"genre\": \"Ação\",\n  \"releaseDate\": \"2025-05-30\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/game/criar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["game", "criar"]}
+          }
+        },
+        {
+          "name": "Listar Games",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/game/listar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["game", "listar"]}}
+        },
+        {
+          "name": "Listar Game por ID",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/game/listar/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["game", "listar", "2"]}}
+        },
+        {
+          "name": "Atualizar Game",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nome Atualizado do Jogo\",\n  \"genre\": \"RPG\",\n  \"releaseDate\": \"2026-01-01\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/game/atualizar/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["game", "atualizar", "2"]}
+          }
+        },
+        {
+          "name": "Deletar Game",
+          "request": {"method": "DELETE", "url": {"raw": "http://localhost:8080/game/deletar/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["game", "deletar", "2"]}}
+        }
+      ]
+    },
+    {
+      "name": "Developer",
+      "item": [
+        {
+          "name": "Criar Developer",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nome da Desenvolvedora\",\n  \"country\": \"Brasil\",\n  \"foundedYear\": 2000\n}"
+            },
+            "url": {"raw": "http://localhost:8080/developer/criar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["developer", "criar"]}
+          }
+        },
+        {
+          "name": "Listar Developers",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/developer/listar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["developer", "listar"]}}
+        },
+        {
+          "name": "Listar Developer por ID",
+          "request": {"method": "GET", "url": {"raw": "http://localhost:8080/developer/listar/3", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["developer", "listar", "3"]}}
+        },
+        {
+          "name": "Atualizar Developer",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nome Atualizado da Desenvolvedora\",\n  \"country\": \"Estados Unidos\",\n  \"foundedYear\": 1995\n}"
+            },
+            "url": {"raw": "http://localhost:8080/developer/atualizar/3", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["developer", "atualizar", "3"]}
+          }
+        },
+        {
+          "name": "Deletar Developer",
+          "request": {"method": "DELETE", "url": {"raw": "http://localhost:8080/developer/deletar/3", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["developer", "deletar", "3"]}}
+        }
+      ]
+    }
+  ]
+}

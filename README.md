@@ -1,95 +1,113 @@
-# GameReview
-# 🎮 GameReview API
+# GameReview API 🎮
 
-A **GameReview** é uma API REST desenvolvida em **Spring Boot** com banco de dados **PostgreSQL** (via Docker), voltada para gerenciamento de avaliações de jogos. O projeto realiza operações CRUD para **jogos**, **desenvolvedoras** e **avaliações**, com foco em boas práticas de arquitetura e segurança de dados, utilizando DTOs, JPA/Hibernate e Swagger para documentação.
+## Sobre o Projeto
 
----
+GameReview é uma API desenvolvida para gerenciar avaliações de jogos, permitindo que usuários compartilhem suas experiências e opiniões sobre diferentes títulos de jogos. O projeto foi construído utilizando Spring Boot e segue as melhores práticas de desenvolvimento de APIs RESTful.
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas 🛠️
+
+- **Java 21**
+- **Spring Boot 3.4.3**
+- **Spring Data JPA**
+- **PostgreSQL**
+- **Docker**
+- **Flyway** (Migração de banco de dados)
+- **MapStruct** (Mapeamento de objetos)
+- **Lombok** (Redução de boilerplate)
+- **SpringDoc OpenAPI** (Documentação da API)
+- **Thymeleaf** (Template engine)
+
+## Pré-requisitos 📋
 
 - Java 21
-- Spring Boot 3.4.3
-- Spring Web & WebFlux
-- Spring Data JPA
-- PostgreSQL (Docker)
-- Flyway (versionamento de banco de dados)
-- Lombok
-- SpringDoc OpenAPI (Swagger)
-- DBeaver (administração do banco)
-- Docker & Docker Compose
-
----
-
-## 📦 Funcionalidades da API
-
-### 📁 Jogos
-- **POST /games** – Criação de um novo jogo
-- **GET /games** – Listagem de todos os jogos
-- **GET /games/{id}** – Detalhes de um jogo específico
-- **PUT /games/{id}** – Atualização de dados de um jogo
-- **DELETE /games/{id}** – Remoção de um jogo
-
-### 🏢 Desenvolvedoras
-- **POST /developers** – Criação de uma desenvolvedora
-- **GET /developers** – Listagem de todas as desenvolvedoras
-- **PUT /developers/{id}** – Atualização de uma desenvolvedora
-- **DELETE /developers/{id}** – Remoção de uma desenvolvedora
-
-### 📝 Avaliações
-- **POST /reviews** – Criação de uma avaliação para um jogo
-- **GET /reviews** – Listagem de todas as avaliações
-- **PUT /reviews/{id}** – Atualização de uma avaliação
-- **DELETE /reviews/{id}** – Remoção de uma avaliação
-
----
-
-## 🛠️ Como Rodar Localmente
-
-### Pré-requisitos
-
-- Java 21+
+- Docker e Docker Compose
 - Maven
-- Docker + Docker Compose
+- IDE de sua preferência (recomendado: IntelliJ IDEA)
 
-### Passos
+## Configuração do Ambiente 🔧
 
-1. **Clone o repositório**
+1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/RyanGTorres/GameReview.git
+   git clone https://github.com/RyanGTorres/GameReview
    cd GameReview
+   ```
 
-2. **Suba o banco de dados PostgreSQL com Docker**
+2. **Configure as variáveis de ambiente:**
+   Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+   ```env
+   DATABASE_DB=nome_do_banco
+   DATABASE_USERNAME=seu_usuario
+   DATABASE_PASSWORD=sua_senha
+   ```
+
+3. **Inicie o banco de dados com Docker:**
    ```bash
    docker-compose up -d
-3. **Rode a aplicação**
+   ```
+
+4. **Execute a aplicação:**
    ```bash
    ./mvnw spring-boot:run
----
+   ```
 
-## 📁 Organização do Projeto
-   
-src/ <br>
-├── main/ <br>
-│   ├── java/com/gamereview/<br>
-│   │   ├── controller/       Endpoints da API<br>
-│   │   ├── dto/              Objetos de transferência de dados<br>
-│   │   ├── mapper/           Conversão entre DTOs e Models <br>
-│   │   ├── model/            Entidades JPA<br>
-│   │   ├── repository/       Interfaces JPA Repository<br>
-│   │   ├── service/          Lógica de negócio<br>
-│   │   └── GameReviewAppplication.java # Classe principal<br>
+## Estrutura do Projeto 📁
 
----
-## 🧠 Objetivos do Projeto
-Este projeto foi desenvolvido como parte do meu portfólio, com o intuito de aplicar e demonstrar conhecimentos em:
+O projeto segue uma arquitetura em camadas:
 
-Desenvolvimento de APIs REST com Spring Boot
+- **Controllers**: Endpoints da API
+- **Services**: Lógica de negócios
+- **Repositories**: Acesso ao banco de dados
+- **Models**: Entidades e DTOs
+- **Mappers**: Conversão entre entidades e DTOs
+- **Config**: Configurações do Spring Boot
 
-Integração com banco de dados via JPA/Hibernate
+## Documentação da API 📚
 
-Uso de Flyway para versionamento
+A documentação da API está disponível através do Swagger UI:
+```
+http://localhost:8080/swagger-ui.html
+```
 
-Boas práticas com DTOs, ResponseEntity e separação em camadas
+## Endpoints Principais 🌐
 
-Containers Docker para ambiente de desenvolvimento
+- `GET /api/games`: Lista todos os jogos
+- `POST /api/games`: Cadastra um novo jogo
+- `GET /api/reviews`: Lista todas as avaliações
+- `POST /api/reviews`: Cadastra uma nova avaliação
+- `GET /api/games/{id}/reviews`: Lista avaliações de um jogo específico
+
+## Banco de Dados 💾
+
+O projeto utiliza PostgreSQL como banco de dados principal, com as seguintes configurações:
+
+- **Porta**: 5438 (mapeada para 5432 no container)
+- **Migrations**: Gerenciadas pelo Flyway
+- **Modelo**: JPA/Hibernate
+
+## Desenvolvimento 👨‍💻
+
+Para contribuir com o projeto:
+
+1. Crie uma branch para sua feature
+2. Faça suas alterações
+3. Execute os testes
+4. Envie um Pull Request
+
+## Build e Deployment 🚀
+
+Para criar um build do projeto:
+```bash
+./mvnw clean package
+```
+
+O arquivo JAR será gerado na pasta `target/`.
+
+## Testes ✅
+
+Execute os testes com:
+```bash
+./mvnw test
+```
+
+
 
