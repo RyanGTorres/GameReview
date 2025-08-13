@@ -84,30 +84,6 @@ O projeto utiliza PostgreSQL como banco de dados principal, com as seguintes con
 - **Migrations**: Gerenciadas pelo Flyway
 - **Modelo**: JPA/Hibernate
 
-## Desenvolvimento 👨‍💻
-
-Para contribuir com o projeto:
-
-1. Crie uma branch para sua feature
-2. Faça suas alterações
-3. Execute os testes
-4. Envie um Pull Request
-
-## Build e Deployment 🚀
-
-Para criar um build do projeto:
-```bash
-./mvnw clean package
-```
-
-O arquivo JAR será gerado na pasta `target/`.
-
-## Testes ✅
-
-Execute os testes com:
-```bash
-./mvnw test
-```
 
 
 
